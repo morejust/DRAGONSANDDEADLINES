@@ -16,5 +16,6 @@ deploy:
   keep_history: true
   github_token: $GITHUB_TOKEN
   local_dir: dist/HrInsights
+  fqdn: db.dragonsanddeadlines.com
   on:
     branch: master
