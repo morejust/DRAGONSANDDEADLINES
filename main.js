@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\" class=\"toolbar\">\n  <div class=\"title\" routerLink=\"\">\n    Hr Insights\n  </div>\n  <div class=\"menu\">\n    <button mat-flat-button routerLink=\"ranks\">Рейтинг</button>\n  </div>\n</mat-toolbar>\n<div class=\"container\">\n  <div class=\"horizontal-wrapper\">\n    <div class=\"general-container\">\n      <mat-card>\n        <div class=\"general-info\">\n          <div class=\"image\">\n            <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtScoopNeck&clotheColor=PastelYellow&eyeType=Close&eyebrowType=UpDownNatural&mouthType=Twinkle&skinColor=Light'\n            />\n          </div>\n          <div class=\"text-data\">\n            <h2>Малахов Дмитрий Александрович</h2>\n            <p>Старший инженер по разработке</p>\n            <p>Front-end разработчик</p>\n          </div>\n        </div>\n        <div class=\"progress-info\">\n          <mat-progress-bar mode=\"determinate\" value=\"40\"></mat-progress-bar>\n        </div>\n      </mat-card>\n    </div>\n  </div>\n\n  <div class=\"horizontal-wrapper\">\n    <div class=\"events-container item-container\">\n      <mat-card>\n        events\n      </mat-card>\n    </div>\n    <div class=\"achievements-container item-container\">\n      <mat-card>\n        <mat-list>\n          <h2 mat-subheader>Достижения</h2>\n          <mat-list-item *ngFor=\"let folder of folders\">\n            <mat-icon mat-list-icon>security</mat-icon>\n            <h4 mat-line>{{folder.name}}</h4>\n            <p mat-line> {{folder.description}} </p>\n          </mat-list-item>\n        </mat-list>\n      </mat-card>\n    </div>\n  </div>\n\n  <div class=\"horizontal-wrapper\">\n    <div class=\"loot-container item-container\">\n      <mat-card>\n        loot\n      </mat-card>\n    </div>\n    <div class=\"skills-container item-container\">\n      <mat-card>\n        <div id=\"chartdiv\" style=\"width: 100%; height: 500px\"></div>\n      </mat-card>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<mat-toolbar color=\"primary\" class=\"toolbar\">\n  <div class=\"title\" routerLink=\"\">\n    Hr Insights\n  </div>\n  <div class=\"menu\">\n    <button mat-flat-button routerLink=\"ranks\">Рейтинг</button>\n  </div>\n</mat-toolbar>\n<div class=\"container\">\n  <div class=\"horizontal-wrapper\">\n    <div class=\"general-container\">\n      <mat-card>\n        <div class=\"general-info\">\n          <div class=\"image\">\n            <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtScoopNeck&clotheColor=PastelYellow&eyeType=Close&eyebrowType=UpDownNatural&mouthType=Twinkle&skinColor=Light'\n            />\n          </div>\n          <div class=\"text-data\">\n            <h2>Малахов Дмитрий Александрович</h2>\n            <p>Старший инженер по разработке</p>\n            <p>Front-end разработчик</p>\n          </div>\n        </div>\n        <div class=\"progress-info\">\n          <mat-progress-bar mode=\"determinate\" value=\"40\"></mat-progress-bar>\n        </div>\n      </mat-card>\n    </div>\n  </div>\n\n  <div class=\"horizontal-wrapper\">\n    <div class=\"events-container item-container\">\n      <mat-card>\n        <mat-list *ngIf=\"events\">\n          <h2 mat-subheader>События</h2>\n          <mat-list-item *ngFor=\"let event of events.events\">\n            <mat-icon mat-list-icon>edit</mat-icon>\n            <h4 mat-line>{{event.name}}</h4>\n            <p>{{event.score}}</p>\n          </mat-list-item>\n        </mat-list>\n      </mat-card>\n    </div>\n    <div class=\"achievements-container item-container\">\n      <mat-card>\n        <mat-list>\n          <h2 mat-subheader>Достижения</h2>\n          <mat-list-item *ngFor=\"let folder of folders\">\n            <mat-icon mat-list-icon>security</mat-icon>\n            <h4 mat-line>{{folder.name}}</h4>\n            <p mat-line> {{folder.description}} </p>\n          </mat-list-item>\n        </mat-list>\n      </mat-card>\n    </div>\n  </div>\n\n  <div class=\"horizontal-wrapper\">\n    <div class=\"loot-container item-container\">\n      <mat-card>\n        loot\n      </mat-card>\n    </div>\n    <div class=\"skills-container item-container\">\n      <mat-card>\n        <div id=\"chartdiv\" style=\"width: 100%; height: 500px\"></div>\n      </mat-card>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -59,13 +59,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @amcharts/amcharts4/charts */ "./node_modules/@amcharts/amcharts4/charts.js");
 /* harmony import */ var _amcharts_amcharts4_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @amcharts/amcharts4/core */ "./node_modules/@amcharts/amcharts4/core.js");
+/* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./events.service */ "./src/app/events.service.ts");
+
 
 
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(zone) {
+    function AppComponent(zone, eventsService) {
         this.zone = zone;
+        this.eventsService = eventsService;
         this.folders = [
             {
                 name: 'Сам себе безопасник I',
@@ -127,6 +130,10 @@ var AppComponent = /** @class */ (function () {
         });
     };
     AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.eventsService.getEvents().subscribe(function (res) {
+            _this.events = res;
+        });
     };
     AppComponent.prototype.ngOnDestroy = function () {
         var _this = this;
@@ -142,7 +149,8 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.sass */ "./src/app/app.component.sass")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"],
+            _events_service__WEBPACK_IMPORTED_MODULE_4__["EventsService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -170,6 +178,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _ranking_ranking_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ranking/ranking.component */ "./src/app/ranking/ranking.component.ts");
 /* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 
@@ -192,6 +202,7 @@ var AppModule = /** @class */ (function () {
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatToolbarModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatMenuModule"],
@@ -210,6 +221,42 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/events.service.ts":
+/*!***********************************!*\
+  !*** ./src/app/events.service.ts ***!
+  \***********************************/
+/*! exports provided: EventsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventsService", function() { return EventsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var EventsService = /** @class */ (function () {
+    function EventsService(http) {
+        this.http = http;
+    }
+    EventsService.prototype.getEvents = function () {
+        return this.http.get('https://jirahrinsights.misteraverin.now.sh/events');
+    };
+    EventsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], EventsService);
+    return EventsService;
 }());
 
 
