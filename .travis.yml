@@ -9,7 +9,7 @@ branches:
 before_script:
   - npm install -g @angular/cli
 script:
-  - ng build --base-href dist/HrInsights
+  - ng build
 deploy:
   provider: pages
   skip_cleanup: true
