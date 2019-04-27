@@ -3,6 +3,7 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import * as am4core from '@amcharts/amcharts4/core';
 import {Section} from './main/main.component';
 import {EventsService} from './events.service';
+import {ActivatedRoute} from '@angular/router';
 
 export interface Section {
   name: string;
@@ -39,16 +40,18 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       description: 'Пройти проверку службы безопасности с первого раза',
     }];
   events: {
-    events: {
-      id: number;
-      name: string;
-      score: number
-    }[];
-  };
+    id: number;
+    name: string;
+    score: number
+  }[];
+  isLoading = true;
+  isBattle = false;
+  isTeam = false;
   private chart: am4charts.XYChart;
 
   constructor(private zone: NgZone,
-              private eventsService: EventsService) {
+              private eventsService: EventsService,
+              private route: ActivatedRoute) {
   }
 
   ngAfterViewInit() {
@@ -99,7 +102,25 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.eventsService.getEvents().subscribe((res: any) => {
-      this.events = res;
+      this.events = res.events.slice(0, 5);
+    });
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+
+    this.route.queryParams.subscribe(res => {
+      if (res.route === 'battle') {
+        this.isBattle = true;
+        this.isTeam = false;
+      } else if (res.route === 'team') {
+        this.isTeam = true;
+        this.isBattle = false;
+      } else {
+        this.isTeam = false;
+        this.isBattle = false;
+      }
+      console.log(this.isBattle);
     });
   }
 

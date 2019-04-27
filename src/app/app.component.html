@@ -1,71 +1,76 @@
 <mat-toolbar color="primary" class="toolbar">
   <div class="title" routerLink="">
-    Hr Insights
+    D&D Dashboard
   </div>
   <div class="menu">
     <button mat-flat-button routerLink="ranks">Рейтинг</button>
   </div>
 </mat-toolbar>
 <div class="container">
-  <div class="horizontal-wrapper">
-    <div class="general-container">
-      <mat-card>
-        <div class="general-info">
-          <div class="image">
-            <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtScoopNeck&clotheColor=PastelYellow&eyeType=Close&eyebrowType=UpDownNatural&mouthType=Twinkle&skinColor=Light'
-            />
+  <div class="dashboard" *ngIf="!isBattle && !isTeam">
+    <div class="horizontal-wrapper" *ngIf="!isLoading">
+      <div class="general-container">
+        <mat-card>
+          <div class="general-info">
+            <div class="image">
+              <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown'
+              />
+            </div>
+            <div class="text-data">
+              <h2>Малахов Дмитрий Александрович</h2>
+              <p>Старший инженер по разработке</p>
+              <p>Front-end разработчик</p>
+            </div>
           </div>
-          <div class="text-data">
-            <h2>Малахов Дмитрий Александрович</h2>
-            <p>Старший инженер по разработке</p>
-            <p>Front-end разработчик</p>
+          <div class="progress-info">
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
           </div>
-        </div>
-        <div class="progress-info">
-          <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-        </div>
-      </mat-card>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="horizontal-wrapper">
+      <div class="events-container item-container">
+        <mat-card>
+          <mat-list *ngIf="events">
+            <h2 mat-subheader>События</h2>
+            <mat-list-item *ngFor="let event of events">
+              <mat-icon mat-list-icon>edit</mat-icon>
+              <h4 mat-line>{{event.name}}</h4>
+              <p>{{event.score}}</p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+      <div class="achievements-container item-container">
+        <mat-card>
+          <mat-list>
+            <h2 mat-subheader>Достижения</h2>
+            <mat-list-item *ngFor="let folder of folders">
+              <mat-icon mat-list-icon>security</mat-icon>
+              <h4 mat-line>{{folder.name}}</h4>
+              <p mat-line> {{folder.description}} </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="horizontal-wrapper">
+      <div class="loot-container item-container">
+        <mat-card>
+          loot
+        </mat-card>
+      </div>
+      <div class="skills-container item-container">
+        <mat-card>
+          <div id="chartdiv" style="width: 100%; height: 500px"></div>
+        </mat-card>
+      </div>
     </div>
   </div>
 
-  <div class="horizontal-wrapper">
-    <div class="events-container item-container">
-      <mat-card>
-        <mat-list *ngIf="events">
-          <h2 mat-subheader>События</h2>
-          <mat-list-item *ngFor="let event of events.events">
-            <mat-icon mat-list-icon>edit</mat-icon>
-            <h4 mat-line>{{event.name}}</h4>
-            <p>{{event.score}}</p>
-          </mat-list-item>
-        </mat-list>
-      </mat-card>
-    </div>
-    <div class="achievements-container item-container">
-      <mat-card>
-        <mat-list>
-          <h2 mat-subheader>Достижения</h2>
-          <mat-list-item *ngFor="let folder of folders">
-            <mat-icon mat-list-icon>security</mat-icon>
-            <h4 mat-line>{{folder.name}}</h4>
-            <p mat-line> {{folder.description}} </p>
-          </mat-list-item>
-        </mat-list>
-      </mat-card>
-    </div>
-  </div>
+  <div class="battle" *ngIf="isBattle">battle</div>
 
-  <div class="horizontal-wrapper">
-    <div class="loot-container item-container">
-      <mat-card>
-        loot
-      </mat-card>
-    </div>
-    <div class="skills-container item-container">
-      <mat-card>
-        <div id="chartdiv" style="width: 100%; height: 500px"></div>
-      </mat-card>
-    </div>
-  </div>
-
+  <div class="team" *ngIf="isTeam">team</div>
 </div>

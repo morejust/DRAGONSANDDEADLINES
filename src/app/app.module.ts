@@ -7,7 +7,7 @@ import {
   MatButtonModule,
   MatCardModule, MatDividerModule, MatIconModule, MatListModule,
   MatMenuModule,
-  MatPaginatorModule, MatProgressBarModule,
+  MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule
@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
 import { RankingComponent } from './ranking/ranking.component';
 import { MainComponent } from './main/main.component';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot([]),
     BrowserAnimationsModule,
     MatToolbarModule,
     MatMenuModule,
@@ -38,7 +40,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatIconModule,
     MatProgressBarModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
