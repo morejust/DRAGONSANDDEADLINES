@@ -33,7 +33,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       name: 'Сам себе безопасник I',
       description: 'Пройти проверку службы безопасности с первого раза',
-    }]
+    }];
 
   constructor(private zone: NgZone) { }
 
@@ -53,7 +53,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
         litres: 266
       }, {
         country: 'Angular',
-        litres: 165
+        litres: 400
       }, {
         country: 'React',
         litres: 139
@@ -67,10 +67,10 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
       ];
 
       /* Create axes */
-      const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis<any>());
       categoryAxis.dataFields.category = 'country';
 
-      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis<any>());
 
       /* Create and configure series */
       const series = chart.series.push(new am4charts.RadarSeries());
