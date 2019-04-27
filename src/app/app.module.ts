@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatCardModule, MatIconModule,
+  MatCardModule, MatDividerModule, MatIconModule, MatListModule,
   MatMenuModule,
   MatPaginatorModule, MatProgressBarModule,
   MatSortModule,
@@ -37,7 +37,8 @@ import { MainComponent } from './main/main.component';
     MatSortModule,
     MatIconModule,
     MatProgressBarModule,
-    Amchar
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,9 +2,15 @@
   <div class="general-container">
     <mat-card>
       <div class="general-info">
-        <h2>Малахов Дмитрий Александрович</h2>
-        <p>Старший инженер по разработке</p>
-        <p>Front-end разработчик</p>
+        <div class="image">
+          <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtScoopNeck&clotheColor=PastelYellow&eyeType=Close&eyebrowType=UpDownNatural&mouthType=Twinkle&skinColor=Light'
+          />
+        </div>
+        <div class="text-data">
+          <h2>Малахов Дмитрий Александрович</h2>
+          <p>Старший инженер по разработке</p>
+          <p>Front-end разработчик</p>
+        </div>
       </div>
       <div class="progress-info">
         <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
@@ -21,7 +27,14 @@
   </div>
   <div class="achievements-container item-container">
     <mat-card>
-      achievements
+      <mat-list>
+        <h2 mat-subheader>Достижения</h2>
+        <mat-list-item *ngFor="let folder of folders">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>{{folder.name}}</h4>
+          <p mat-line> {{folder.description}} </p>
+        </mat-list-item>
+      </mat-list>
     </mat-card>
   </div>
 </div>
@@ -34,7 +47,7 @@
   </div>
   <div class="skills-container item-container">
     <mat-card>
-      skills
+      <div id="chartdiv" style="width: 100%; height: 500px"></div>
     </mat-card>
   </div>
 </div>
