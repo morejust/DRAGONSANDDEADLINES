@@ -31,7 +31,14 @@
   <div class="horizontal-wrapper">
     <div class="events-container item-container">
       <mat-card>
-        events
+        <mat-list *ngIf="events">
+          <h2 mat-subheader>События</h2>
+          <mat-list-item *ngFor="let event of events.events">
+            <mat-icon mat-list-icon>edit</mat-icon>
+            <h4 mat-line>{{event.name}}</h4>
+            <p>{{event.score}}</p>
+          </mat-list-item>
+        </mat-list>
       </mat-card>
     </div>
     <div class="achievements-container item-container">

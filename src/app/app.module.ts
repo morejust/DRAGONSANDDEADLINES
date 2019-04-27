@@ -15,6 +15,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import { RankingComponent } from './ranking/ranking.component';
 import { MainComponent } from './main/main.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MainComponent } from './main/main.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatMenuModule,

@@ -2,6 +2,18 @@ import {AfterViewInit, Component, NgZone, OnDestroy, OnInit} from '@angular/core
 import * as am4charts from '@amcharts/amcharts4/charts';
 import * as am4core from '@amcharts/amcharts4/core';
 import {Section} from './main/main.component';
+import {EventsService} from './events.service';
+
+export interface Section {
+  name: string;
+  description: string;
+}
+
+export interface Event {
+  'id': number;
+  'name': string;
+  'score': number;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,7 +21,6 @@ import {Section} from './main/main.component';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
-  private chart: am4charts.XYChart;
   folders: Section[] = [
     {
       name: 'Сам себе безопасник I',
@@ -27,8 +38,18 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       name: 'Сам себе безопасник I',
       description: 'Пройти проверку службы безопасности с первого раза',
     }];
+  events: {
+    events: {
+      id: number;
+      name: string;
+      score: number
+    }[];
+  };
+  private chart: am4charts.XYChart;
 
-  constructor(private zone: NgZone) { }
+  constructor(private zone: NgZone,
+              private eventsService: EventsService) {
+  }
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
@@ -77,6 +98,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.eventsService.getEvents().subscribe(res => {
+      this.events = res;
+    });
   }
 
   ngOnDestroy() {
