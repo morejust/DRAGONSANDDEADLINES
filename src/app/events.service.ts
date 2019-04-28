@@ -11,6 +11,6 @@ export class EventsService {
   constructor(private http: HttpClient) {}
 
   getEvents() {
-    return this.http.get('https://dragons-and-deadlines.herokuapp.com/events');
+    return this.http.get('https://dragons-and-deadlines.herokuapp.com/events/');
   }
 }

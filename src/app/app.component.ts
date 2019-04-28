@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     id: number;
     name: string;
     score: number
-  }[];
+  }[] = [];
   isLoading = true;
   isBattle = false;
   isTeam = false;
@@ -139,12 +139,19 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.eventsService.getEvents().subscribe((res: any) => {
-      this.events = res.events.slice(0, 5);
+      if (res.events[0]) {
+        this.events.unshift(res.events.slice(0, 5));
+      }
     });
+    setInterval(() => {
+      this.eventsService.getEvents().subscribe((res: any) => {
+        if (res.events[0]) {
+          this.events.unshift(res.events[0]);
+          console.log(this.events)
+        }
+      });
+    }, 10000);
 
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
 
     this.route.queryParams.subscribe(res => {
       if (res.route === 'battle') {
@@ -176,7 +183,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
     setTimeout(() => {
       this.dialog.closeAll();
-    }, 500)
+    }, 500);
 
     dialogRef.afterClosed().subscribe(result => {
     });
