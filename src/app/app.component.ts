@@ -5,6 +5,7 @@ import {Section} from './main/main.component';
 import {EventsService} from './events.service';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {MatDialog, MatDialogRef} from '@angular/material';
 
 export interface Section {
   name: string;
@@ -51,7 +52,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   experience = 40;
   accessoir = 'Blank';
   avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=${this.accessoir}&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown`;
-  private chart: am4charts.XYChart;
   stories = [
     'Deepbane - он молодой дракон. У него фиолетовая чешуя и исключительно большие крылья. Его дыхание - струя ядовитой жидкости. Он очень мистический. Он живет в экзотических джунглях. Его клад бесконечно мал и почти полностью состоит из магических артефактов.',
     'Slimegout - он молодой дракон. У него синие чешуи и заметно большие и злые когти. Его дыхание - вязкая слизь. Он очень любопытен. Он живет в разрушенном городе в пустыне. Его запас бесконечно мал.',
@@ -59,11 +59,13 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
   isAttacking = false;
   dragonHP = 90;
+  private chart: am4charts.XYChart;
 
   constructor(private zone: NgZone,
               private eventsService: EventsService,
               private http: HttpClient,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public dialog: MatDialog) {
   }
 
   ngAfterViewInit() {
@@ -114,6 +116,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   attack() {
     this.isAttacking = true;
+    this.openDialog();
     setTimeout(() => {
       this.isAttacking = false;
       this.dragonHP -= 25;
@@ -161,4 +164,35 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '400px'
+    });
+
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 4000)
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+}
+
+@Component({
+  selector: 'app-dialog-overview-example-dialog',
+  template: `
+    <img src="../assets/damage.gif" class="damage_popup">
+  `,
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>) {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }
