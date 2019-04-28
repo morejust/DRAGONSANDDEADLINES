@@ -1,10 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 body
   //background: url("assets/bcg.png")
+  margin: 0
+  padding: 0
   width: 100%
   height: 100%
   background-size: cover
   opacity: 0.96
+
+.img1
+  background-image: url('https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown')
+  background-size: cover
+
+.img2
+  background-image: url('https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Sunglasses&hairColor=Blonde&facialHairType=BeardMedium&facialHairColor=Red&clotheType=GraphicShirt&clotheColor=Heather&graphicType=Pizza&eyeType=Surprised&eyebrowType=FlatNatural&mouthType=Serious&skinColor=Pale')
+  background-size: cover
+
+.img3
+  background-image: url('https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Sunglasses&hairColor=BrownDark&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=ShirtScoopNeck&clotheColor=Gray02&graphicType=Deer&eyeType=Happy&eyebrowType=RaisedExcited&mouthType=Default&skinColor=Brown')
+  background-size: cover
+
+.img4
+  background-image: url('https://avataaars.io/?avatarStyle=Circle&topType=LongHairDreads&accessoriesType=Prescription02&hatColor=PastelOrange&hairColor=Black&facialHairType=MoustacheMagnum&facialHairColor=Blonde&clotheType=CollarSweater&clotheColor=Blue01&graphicType=Resist&eyeType=WinkWacky&eyebrowType=FlatNatural&mouthType=ScreamOpen&skinColor=DarkBrown')
+  background-size: cover
+
+.menu
+  button
+    margin: 0 10px
+
+.role
+  margin: 0 30px
 
 .horizontal-wrapper
   width: 100%
@@ -29,3 +54,24 @@ body
       margin-right: 50px
 .mat-progress-bar
   height: 25px
+
+.team-title-card
+  width: fit-content
+  margin: 50px 0
+
+.team-card-list
+  width: 100%
+  display: flex
+  justify-content: space-between
+  mat-card
+    margin: 0 10px
+
+.loot-list
+  display: flex
+  flex-wrap: wrap
+  .loot-item
+    width: 42.5%
+    display: inline-block
+    height: 120px
+    mat-card-content
+      margin-top: 15px

@@ -4,6 +4,7 @@ import * as am4core from '@amcharts/amcharts4/core';
 import {Section} from './main/main.component';
 import {EventsService} from './events.service';
 import {ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 
 export interface Section {
   name: string;
@@ -48,9 +49,15 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   isBattle = false;
   isTeam = false;
   private chart: am4charts.XYChart;
+  stories = [
+    'Deepbane - он молодой дракон. У него фиолетовая чешуя и исключительно большие крылья. Его дыхание - струя ядовитой жидкости. Он очень мистический. Он живет в экзотических джунглях. Его клад бесконечно мал и почти полностью состоит из магических артефактов.',
+    'Slimegout - он молодой дракон. У него синие чешуи и заметно большие и злые когти. Его дыхание - вязкая слизь. Он очень любопытен. Он живет в разрушенном городе в пустыне. Его запас бесконечно мал.',
+    'Redscholar the Wise - она ​​древний дракон. У нее красные чешуйки и гребни на спине. Ее дыхание - вязкая слизь. Она ученый в глубине души. Ее знание подземного мира детально. Она живет в заброшенном подземном городе. Ее клад впечатляет и почти полностью состоит из ценных руд с преобладанием серебра.'
+  ];
 
   constructor(private zone: NgZone,
               private eventsService: EventsService,
+              private http: HttpClient,
               private route: ActivatedRoute) {
   }
 

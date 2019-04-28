@@ -13,4 +13,8 @@ export class EventsService {
   getEvents() {
     return this.http.get('https://jirahrinsights.misteraverin.now.sh/events');
   }
+
+  getLegend() {
+    return this.http.get('https://www.seventhsanctum.com/generate.php?Genname=dragon');
+  }
 }

@@ -3,22 +3,25 @@
     D&D Dashboard
   </div>
   <div class="menu">
-    <button mat-flat-button routerLink="ranks">Рейтинг</button>
+    <!--    <button mat-flat-button routerLink="ranks">Рейтинг</button>-->
+    <button mat-raised-button [routerLink]="['/']" [queryParams]="{route: 'team'}">Моя команда</button>
+    <button mat-flat-button [routerLink]="['/']" [queryParams]="{route: 'battle'}">Рейд</button>
   </div>
 </mat-toolbar>
 <div class="container">
   <div class="dashboard" *ngIf="!isBattle && !isTeam">
-    <div class="horizontal-wrapper" *ngIf="!isLoading">
+    <div class="horizontal-wrapper">
       <div class="general-container">
         <mat-card>
           <div class="general-info">
             <div class="image">
-              <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown'
+              <img
+                src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown'
               />
             </div>
             <div class="text-data">
               <h2>Малахов Дмитрий Александрович</h2>
-              <p>Старший инженер по разработке</p>
+              <p class="role">Старший инженер по разработке</p>
               <p>Front-end разработчик</p>
             </div>
           </div>
@@ -58,8 +61,41 @@
 
     <div class="horizontal-wrapper">
       <div class="loot-container item-container">
-        <mat-card>
-          loot
+        <mat-card class="loot-list">
+          <mat-card class="loot-item">
+            <mat-card-header>
+              <div mat-card-avatar class="img1"></div>
+              <mat-card-title>Модные очки</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              Защищают от радиоактивного излучения боссов
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="loot-item">
+            <mat-card-header>
+              <div mat-card-avatar class="img2"></div>
+              <mat-card-title>Олдскульная шляпа</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              Помогает скрываться от палящего солнца и круто выглядит
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="loot-item">
+            <mat-card-header>
+              <div mat-card-avatar class="img2"></div>
+              <mat-card-title>Густая борода</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>+99999 к харизме</mat-card-content>
+          </mat-card>
+          <mat-card class="loot-item">
+            <mat-card-header>
+              <div mat-card-avatar class="img4"></div>
+              <mat-card-title>Шапка горнолыжника</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Редкий предмет за победу на горнолыжном чемпионате</p>
+            </mat-card-content>
+          </mat-card>
         </mat-card>
       </div>
       <div class="skills-container item-container">
@@ -70,7 +106,51 @@
     </div>
   </div>
 
-  <div class="battle" *ngIf="isBattle">battle</div>
+  <div class="battle" *ngIf="isBattle">
+    battle
+  </div>
 
-  <div class="team" *ngIf="isTeam">team</div>
+  <div class="team" *ngIf="isTeam">
+    <div class="horizontal-wrapper">
+      <div class="team-container">
+        <mat-card class="team-title-card">
+            <mat-card-title>Моя команда</mat-card-title>
+        </mat-card>
+
+        <mat-card>
+          <div class="team-card-list">
+            <mat-card>
+              <mat-card-header>
+                <div mat-card-avatar class="img1"></div>
+                <mat-card-title>Александр Валерьевич</mat-card-title>
+                <mat-card-subtitle>Backend разработчик</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+            <mat-card>
+              <mat-card-header>
+                <div mat-card-avatar class="img2"></div>
+                <mat-card-title>Виталий Анатольевич</mat-card-title>
+                <mat-card-subtitle>Frontend разработчик</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+            <mat-card>
+              <mat-card-header>
+                <div mat-card-avatar class="img3"></div>
+                <mat-card-title>Анатолий Павлович</mat-card-title>
+                <mat-card-subtitle>Backend разработчик</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+            <mat-card>
+              <mat-card-header>
+                <div mat-card-avatar class="img3"></div>
+                <mat-card-title>Антон Евгеньевич</mat-card-title>
+                <mat-card-subtitle>Владелец продукта</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </div>
