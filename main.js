@@ -184,7 +184,7 @@ var AppComponent = /** @class */ (function () {
         setInterval(function () {
             _this.eventsService.getEvents().subscribe(function (res) {
                 if (res.events[0]) {
-                    _this.events = res.events;
+                    _this.events = res.events.slice(0, 5);
                 }
             });
         }, 10000);
