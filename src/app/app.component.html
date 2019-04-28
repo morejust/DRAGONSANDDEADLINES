@@ -140,7 +140,7 @@
       </div>
       <button mat-raised-button color="warn"
               class="attack"
-              [disabled]="isAttacking && dragonHP <= 0"
+              [disabled]="isAttacking || dragonHP <= 10"
               (click)="attack()">Атаковать</button>
     </mat-card>
 
@@ -152,10 +152,18 @@
       <img src="../assets/damage.gif" class="damage">
     </div>
 
-    <mat-card class="dragon">
+    <mat-card class="dragon" *ngIf="dragonHP >= 10">
       <img src="../assets/dragon.jpg">
       <h3>{{dragonHP}}/100</h3>
       <mat-progress-bar [mode]="determinate" [value]="dragonHP" color="warn"></mat-progress-bar>
+    </mat-card>
+    <mat-card class="dragon-loot" *ngIf="dragonHP < 10">
+      <img src="../assets/hat.jpg" alt="">
+      <img src="../assets/flowers.jpg" alt="">
+      <img src="../assets/glasses.jpg" alt="">
+      <div class="pizza-wrapper">
+        <img src="../assets/pizza.jpg" alt="" class="pizza" (click)="goToPizza()">
+      </div>
     </mat-card>
   </div>
 

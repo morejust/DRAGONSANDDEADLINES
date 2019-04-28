@@ -30,8 +30,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       description: 'Пройти проверку службы безопасности с первого раза',
     },
     {
-      name: 'Никогда не говори никогда II',
-      description: 'Пронести коммит в прод без ревью и тестов',
+      name: 'Контрибьютор недели IV',
+      description: 'Внести самый большой вклад в проект за неделю',
     },
     {
       name: 'Один в поле воин VI',
@@ -114,13 +114,17 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  goToPizza() {
+    window.open('https://dominospizza.ru/');
+  }
+
   attack() {
     this.isAttacking = true;
     this.openDialog();
     setTimeout(() => {
       this.isAttacking = false;
       this.dragonHP -= 25;
-    }, 4000);
+    }, 500);
   }
 
   setAccessoir() {
@@ -172,7 +176,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
     setTimeout(() => {
       this.dialog.closeAll();
-    }, 4000)
+    }, 500)
 
     dialogRef.afterClosed().subscribe(result => {
     });
