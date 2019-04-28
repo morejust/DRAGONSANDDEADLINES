@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   isTeam = false;
   experience = 40;
   accessoir = 'Blank';
-  avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=${this.accessoir}&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown`;
+  avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=LongHairFrida&accessoriesType=${this.accessoir}&facialHairType=BeardMagestic&facialHairColor=Auburn&clotheType=ShirtScoopNeck&clotheColor=PastelBlue&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Tanned`;
   stories = [
     'Deepbane - он молодой дракон. У него фиолетовая чешуя и исключительно большие крылья. Его дыхание - струя ядовитой жидкости. Он очень мистический. Он живет в экзотических джунглях. Его клад бесконечно мал и почти полностью состоит из магических артефактов.',
     'Slimegout - он молодой дракон. У него синие чешуи и заметно большие и злые когти. Его дыхание - вязкая слизь. Он очень любопытен. Он живет в разрушенном городе в пустыне. Его запас бесконечно мал.',
@@ -134,7 +134,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this.accessoir = 'Blank';
     }
 
-    this.avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=${this.accessoir}&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown`;
+    this.avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=LongHairFrida&accessoriesType=${this.accessoir}&facialHairType=BeardMagestic&facialHairColor=Auburn&clotheType=ShirtScoopNeck&clotheColor=PastelBlue&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Tanned`;
   }
 
   ngOnInit() {
