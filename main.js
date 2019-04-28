@@ -49,12 +49,13 @@ module.exports = ".toolbar {\n  display: flex;\n  justify-content: space-between
 /*!**********************************!*\
   !*** ./src/app/app.component.ts ***!
   \**********************************/
-/*! exports provided: AppComponent */
+/*! exports provided: AppComponent, DialogOverviewExampleDialog */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DialogOverviewExampleDialog", function() { return DialogOverviewExampleDialog; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _amcharts_amcharts4_charts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @amcharts/amcharts4/charts */ "./node_modules/@amcharts/amcharts4/charts.js");
@@ -62,6 +63,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _events_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./events.service */ "./src/app/events.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
 
 
 
@@ -70,11 +73,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(zone, eventsService, http, route) {
+    function AppComponent(zone, eventsService, http, route, dialog) {
         this.zone = zone;
         this.eventsService = eventsService;
         this.http = http;
         this.route = route;
+        this.dialog = dialog;
         this.folders = [
             {
                 name: 'Сам себе безопасник I',
@@ -151,6 +155,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.attack = function () {
         var _this = this;
         this.isAttacking = true;
+        this.openDialog();
         setTimeout(function () {
             _this.isAttacking = false;
             _this.dragonHP -= 25;
@@ -197,6 +202,17 @@ var AppComponent = /** @class */ (function () {
             }
         });
     };
+    AppComponent.prototype.openDialog = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+            width: '400px'
+        });
+        setTimeout(function () {
+            _this.dialog.closeAll();
+        }, 4000);
+        dialogRef.afterClosed().subscribe(function (result) {
+        });
+    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
@@ -206,9 +222,27 @@ var AppComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"],
             _events_service__WEBPACK_IMPORTED_MODULE_4__["EventsService"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatDialog"]])
     ], AppComponent);
     return AppComponent;
+}());
+
+var DialogOverviewExampleDialog = /** @class */ (function () {
+    function DialogOverviewExampleDialog(dialogRef) {
+        this.dialogRef = dialogRef;
+    }
+    DialogOverviewExampleDialog.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    DialogOverviewExampleDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-dialog-overview-example-dialog',
+            template: "\n    <img src=\"../assets/damage.gif\" class=\"damage_popup\">\n  ",
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_7__["MatDialogRef"]])
+    ], DialogOverviewExampleDialog);
+    return DialogOverviewExampleDialog;
 }());
 
 
@@ -255,7 +289,8 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                 _ranking_ranking_component__WEBPACK_IMPORTED_MODULE_7__["RankingComponent"],
-                _main_main_component__WEBPACK_IMPORTED_MODULE_8__["MainComponent"]
+                _main_main_component__WEBPACK_IMPORTED_MODULE_8__["MainComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["DialogOverviewExampleDialog"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -274,10 +309,14 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatProgressBarModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDividerModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatListModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatProgressSpinnerModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatProgressSpinnerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"],
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
+            entryComponents: [
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["DialogOverviewExampleDialog"]
+            ]
         })
     ], AppModule);
     return AppModule;
