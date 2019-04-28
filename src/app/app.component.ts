@@ -29,16 +29,16 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       description: 'Пройти проверку службы безопасности с первого раза',
     },
     {
-      name: 'Сам себе безопасник I',
-      description: 'Пройти проверку службы безопасности с первого раза',
+      name: 'Никогда не говори никогда II',
+      description: 'Пронести коммит в прод без ревью и тестов',
     },
     {
-      name: 'Сам себе безопасник I',
-      description: 'Пройти проверку службы безопасности с первого раза',
+      name: 'Один в поле воин VI',
+      description: 'Поднять упавший прод после пятничного релиза в субботу',
     },
     {
-      name: 'Сам себе безопасник I',
-      description: 'Пройти проверку службы безопасности с первого раза',
+      name: 'А что, так можно было?',
+      description: 'Покрыть тестами 100% кода',
     }];
   events: {
     id: number;
@@ -48,6 +48,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   isLoading = true;
   isBattle = false;
   isTeam = false;
+  experience = 40;
+  accessoir = 'Blank';
+  avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=${this.accessoir}&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown`;
   private chart: am4charts.XYChart;
   stories = [
     'Deepbane - он молодой дракон. У него фиолетовая чешуя и исключительно большие крылья. Его дыхание - струя ядовитой жидкости. Он очень мистический. Он живет в экзотических джунглях. Его клад бесконечно мал и почти полностью состоит из магических артефактов.',
@@ -105,6 +108,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.chart = chart;
     });
+  }
+
+  setAccessoir(item) {
+    this.avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=${item}&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown`;
   }
 
   ngOnInit() {

@@ -11,10 +11,6 @@ export class EventsService {
   constructor(private http: HttpClient) {}
 
   getEvents() {
-    return this.http.get('https://jirahrinsights.misteraverin.now.sh/events');
-  }
-
-  getLegend() {
-    return this.http.get('https://www.seventhsanctum.com/generate.php?Genname=dragon');
+    return this.http.get('https://dragons-and-deadlines.herokuapp.com/events');
   }
 }

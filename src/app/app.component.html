@@ -16,7 +16,7 @@
           <div class="general-info">
             <div class="image">
               <img
-                src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown'
+                [src]=avatarSrc
               />
             </div>
             <div class="text-data">
@@ -62,7 +62,7 @@
     <div class="horizontal-wrapper">
       <div class="loot-container item-container">
         <mat-card class="loot-list">
-          <mat-card class="loot-item">
+          <mat-card class="loot-item" (click)="setAccessoir('Sunglasses')">
             <mat-card-header>
               <div mat-card-avatar class="img1"></div>
               <mat-card-title>Модные очки</mat-card-title>
