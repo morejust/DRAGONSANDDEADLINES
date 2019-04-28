@@ -57,6 +57,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     'Slimegout - он молодой дракон. У него синие чешуи и заметно большие и злые когти. Его дыхание - вязкая слизь. Он очень любопытен. Он живет в разрушенном городе в пустыне. Его запас бесконечно мал.',
     'Redscholar the Wise - она ​​древний дракон. У нее красные чешуйки и гребни на спине. Ее дыхание - вязкая слизь. Она ученый в глубине души. Ее знание подземного мира детально. Она живет в заброшенном подземном городе. Ее клад впечатляет и почти полностью состоит из ценных руд с преобладанием серебра.'
   ];
+  isAttacking = false;
+  dragonHP = 90;
 
   constructor(private zone: NgZone,
               private eventsService: EventsService,
@@ -110,8 +112,22 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  setAccessoir(item) {
-    this.avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=${item}&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown`;
+  attack() {
+    this.isAttacking = true;
+    setTimeout(() => {
+      this.isAttacking = false;
+      this.dragonHP -= 25;
+    }, 4000);
+  }
+
+  setAccessoir() {
+    if (this.accessoir === 'Blank') {
+      this.accessoir = 'Sunglasses';
+    } else {
+      this.accessoir = 'Blank';
+    }
+
+    this.avatarSrc = `https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=${this.accessoir}&hairColor=Blonde&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Default&eyebrowType=SadConcerned&mouthType=Default&skinColor=Brown`;
   }
 
   ngOnInit() {

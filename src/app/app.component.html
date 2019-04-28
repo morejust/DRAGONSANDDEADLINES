@@ -62,7 +62,7 @@
     <div class="horizontal-wrapper">
       <div class="loot-container item-container">
         <mat-card class="loot-list">
-          <mat-card class="loot-item" (click)="setAccessoir('Sunglasses')">
+          <mat-card class="loot-item" [ngClass]="accessoir === 'Blank' ? '' : 'active'" (click)="setAccessoir()">
             <mat-card-header>
               <div mat-card-avatar class="img1"></div>
               <mat-card-title>Модные очки</mat-card-title>
@@ -107,7 +107,56 @@
   </div>
 
   <div class="battle" *ngIf="isBattle">
-    battle
+    <mat-card>
+      <div class="raid-card-list">
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="img1"></div>
+            <mat-card-title>Александр Валерьевич</mat-card-title>
+            <mat-card-subtitle>Backend разработчик</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="img2"></div>
+            <mat-card-title>Виталий Анатольевич</mat-card-title>
+            <mat-card-subtitle>Frontend разработчик</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="img3"></div>
+            <mat-card-title>Анатолий Павлович</mat-card-title>
+            <mat-card-subtitle>Backend разработчик</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="img3"></div>
+            <mat-card-title>Антон Евгеньевич</mat-card-title>
+            <mat-card-subtitle>Владелец продукта</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+      <button mat-raised-button color="warn"
+              class="attack"
+              [disabled]="isAttacking && dragonHP <= 0"
+              (click)="attack()">Атаковать</button>
+    </mat-card>
+
+    <mat-card *ngIf="!isAttacking">
+      <h1 class="versus">VS.</h1>
+    </mat-card>
+
+    <div class="damage-container" *ngIf="isAttacking">
+      <img src="../assets/damage.gif" class="damage">
+    </div>
+
+    <mat-card class="dragon">
+      <img src="../assets/dragon.jpg">
+      <h3>{{dragonHP}}/100</h3>
+      <mat-progress-bar [mode]="determinate" [value]="dragonHP" color="warn"></mat-progress-bar>
+    </mat-card>
   </div>
 
   <div class="team" *ngIf="isTeam">
@@ -147,7 +196,6 @@
                 <mat-card-subtitle>Владелец продукта</mat-card-subtitle>
               </mat-card-header>
             </mat-card>
-
           </div>
         </mat-card>
       </div>
