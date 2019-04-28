@@ -140,14 +140,13 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.eventsService.getEvents().subscribe((res: any) => {
       if (res.events[0]) {
-        this.events.unshift(res.events.slice(0, 5));
+        this.events = res.events.slice(0, 5);
       }
     });
     setInterval(() => {
       this.eventsService.getEvents().subscribe((res: any) => {
         if (res.events[0]) {
-          this.events.unshift(res.events[0]);
-          console.log(this.events)
+          this.events = res.events;
         }
       });
     }, 10000);
