@@ -178,14 +178,13 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.eventsService.getEvents().subscribe(function (res) {
             if (res.events[0]) {
-                _this.events.unshift(res.events.slice(0, 5));
+                _this.events = res.events.slice(0, 5);
             }
         });
         setInterval(function () {
             _this.eventsService.getEvents().subscribe(function (res) {
                 if (res.events[0]) {
-                    _this.events.unshift(res.events[0]);
-                    console.log(_this.events);
+                    _this.events = res.events;
                 }
             });
         }, 10000);
